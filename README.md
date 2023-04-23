@@ -1,2 +1,9 @@
-# itstep-server
-Basic Express.js server for Front-End students in IT Step Academy
+# Server
+Basic server for Front-End students in IT Step Academy
+
+## Technogoly stack
+  * Express.js
+  * MongoDB
+
+## Run
+npm run start
