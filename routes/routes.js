@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const Item = require('../models/Item');
+const cors = require('cors');
 
-router.get('/items', async (req, res) => {
+router.get('/items', cors(), async (req, res) => {
     try {
         const items = await Item.find({});
         res.status(200).json(items)
@@ -10,7 +11,7 @@ router.get('/items', async (req, res) => {
     }
 });
 
-router.get('/items/:id', async (req, res) => {
+router.get('/items/:id', cors(), async (req, res) => {
     try {
         const { id } = req.params;
         const items = await Item.findById(id);
@@ -20,7 +21,7 @@ router.get('/items/:id', async (req, res) => {
     }
 });
 
-router.post('/items', async (req, res) => {
+router.post('/items', cors(), async (req, res) => {
     try {
         const item = await Item.create(req.body);
         res.status(200).json(item);
@@ -29,7 +30,7 @@ router.post('/items', async (req, res) => {
     }
 })
 
-router.put('/items/:id', async (req, res) => {
+router.put('/items/:id', cors(), async (req, res) => {
     try {
         const { id } = req.params;
         const item = await Item.findByIdAndUpdate(id, req.body)
@@ -43,7 +44,7 @@ router.put('/items/:id', async (req, res) => {
     }
 })
 
-router.delete('/items/:id', async (req, res) => {
+router.delete('/items/:id', cors(), async (req, res) => {
     try {
         const { id } = req.params;
         const item = await Item.findByIdAndDelete(id)
